@@ -2,95 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* BTG Pactual Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* BTG Pactual Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 220 30% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 30% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* BTG Navy Blue */
+    --primary: 213 100% 15%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 213 20% 95%;
+    --secondary-foreground: 213 100% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 213 100% 15%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Semantic Colors */
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 200 98% 39%;
+    --info-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 213 100% 15%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.75rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* BTG Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 100% 15%) 0%, hsl(213 80% 25%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(145 63% 42%) 0%, hsl(160 60% 45%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(45 90% 55%) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(213 100% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(213 100% 15% / 0.08), 0 2px 4px -2px hsl(213 100% 15% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(213 100% 15% / 0.1), 0 4px 6px -4px hsl(213 100% 15% / 0.08);
+    --shadow-card: 0 0 0 1px hsl(214 32% 91%), 0 2px 4px hsl(213 100% 15% / 0.04);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar - matching BTG style */
+    --sidebar-background: 213 100% 15%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 213 100% 15%;
+    --sidebar-accent: 213 80% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 213 60% 25%;
+    --sidebar-ring: 0 0% 100%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* BTG Pactual Dark Theme */
+    --background: 220 25% 6%;
+    --foreground: 210 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 25% 10%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 25% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 15% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 100% 60%;
+    --accent-foreground: 220 25% 6%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --success: 145 60% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 25% 6%;
+    
+    --info: 200 95% 50%;
+    --info-foreground: 220 25% 6%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 210 100% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 60%) 0%, hsl(200 90% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 25% 8%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(145 60% 45%) 0%, hsl(160 55% 50%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(38 90% 55%) 0%, hsl(45 88% 60%) 100%);
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 0 0 1px hsl(220 20% 20%), 0 2px 8px hsl(0 0% 0% / 0.3);
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 210 100% 60%;
   }
 }
 
@@ -99,7 +137,189 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+@layer components {
+  .btg-card {
+    @apply bg-card rounded-xl border border-border p-6;
+    box-shadow: var(--shadow-card);
+  }
+
+  .btg-card-hover {
+    @apply btg-card transition-all duration-300;
+  }
+
+  .btg-card-hover:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .btg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .btg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .btg-gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .btg-gradient-warning {
+    background: var(--gradient-warning);
+  }
+
+  .btg-shadow-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btg-shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  .btg-shadow-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btg-text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-primary);
+  }
+
+  .btg-input {
+    @apply w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+
+  .btg-button-primary {
+    @apply px-6 py-3 rounded-lg font-medium text-primary-foreground transition-all duration-200;
+    background: var(--gradient-primary);
+  }
+
+  .btg-button-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btg-button-secondary {
+    @apply px-6 py-3 rounded-lg font-medium bg-secondary text-secondary-foreground border border-border transition-all duration-200;
+  }
+
+  .btg-button-secondary:hover {
+    @apply bg-muted;
+  }
+
+  .btg-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .btg-badge-success {
+    @apply btg-badge bg-success/10 text-success;
+  }
+
+  .btg-badge-warning {
+    @apply btg-badge bg-warning/10 text-warning;
+  }
+
+  .btg-badge-danger {
+    @apply btg-badge bg-destructive/10 text-destructive;
+  }
+
+  .btg-badge-info {
+    @apply btg-badge bg-info/10 text-info;
+  }
+
+  .btg-score-ring {
+    @apply relative flex items-center justify-center;
+  }
+
+  .btg-score-ring::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: conic-gradient(
+      hsl(var(--success)) var(--score-percent, 0%),
+      hsl(var(--muted)) var(--score-percent, 0%)
+    );
+    mask: radial-gradient(farthest-side, transparent calc(100% - 8px), white calc(100% - 8px));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), white calc(100% - 8px));
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slideIn {
+    animation: slideIn 0.4s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--card)) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
