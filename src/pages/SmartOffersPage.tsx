@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { 
   TrendingUp, 
   Shield, 
@@ -9,14 +10,17 @@ import {
   Zap,
   CheckCircle,
   BarChart3,
-  Sparkles
+  Sparkles,
+  Calculator
 } from 'lucide-react';
 import { useCommercialScoring } from '@/hooks/useCommercialScoring';
+import { FinancialProduct } from '@/types/offers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { ScoreRing } from '@/components/ui/ScoreRing';
+import { ProductSimulator } from '@/components/offers/ProductSimulator';
 import { Link } from 'react-router-dom';
 
 export default function SmartOffersPage() {
@@ -27,6 +31,19 @@ export default function SmartOffersPage() {
     crossSellProducts,
     hasData 
   } = useCommercialScoring();
+
+  const [selectedProduct, setSelectedProduct] = useState<FinancialProduct | null>(null);
+  const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
+
+  const openSimulator = (product: FinancialProduct) => {
+    setSelectedProduct(product);
+    setIsSimulatorOpen(true);
+  };
+
+  const closeSimulator = () => {
+    setIsSimulatorOpen(false);
+    setSelectedProduct(null);
+  };
 
   if (!hasData) {
     return (
@@ -66,6 +83,13 @@ export default function SmartOffersPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
+      {/* Simulator Modal */}
+      <ProductSimulator 
+        product={selectedProduct} 
+        isOpen={isSimulatorOpen} 
+        onClose={closeSimulator} 
+      />
+
       {/* Header */}
       <div>
         <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Ofertas Inteligentes</h1>
@@ -156,12 +180,15 @@ export default function SmartOffersPage() {
                 </div>
                 
                 <div className="mt-4 space-y-2">
-                  <Button className="w-full btg-button-primary text-lg py-6">
-                    <Zap className="w-5 h-5 mr-2" />
-                    INVESTIR AGORA
+                  <Button 
+                    className="w-full btg-button-primary text-lg py-6"
+                    onClick={() => openSimulator(priorityOffer.product)}
+                  >
+                    <Calculator className="w-5 h-5 mr-2" />
+                    SIMULAR AGORA
                   </Button>
                   <p className="text-xs text-center text-muted-foreground">
-                    Simulação sem compromisso
+                    Simulação interativa sem compromisso
                   </p>
                 </div>
               </div>
@@ -199,8 +226,13 @@ export default function SmartOffersPage() {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full">
-                  Simular <ArrowRight className="w-4 h-4 ml-2" />
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => openSimulator(product)}
+                >
+                  <Calculator className="w-4 h-4 mr-2" />
+                  Simular
                 </Button>
               </CardContent>
             </Card>
@@ -220,7 +252,13 @@ export default function SmartOffersPage() {
                   <p className="text-xs text-muted-foreground mb-3">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <Badge variant="secondary">{product.compatibility}% match</Badge>
-                    <Button size="sm" variant="ghost">Ver mais</Button>
+                    <Button 
+                      size="sm" 
+                      variant="ghost"
+                      onClick={() => openSimulator(product)}
+                    >
+                      Simular
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
