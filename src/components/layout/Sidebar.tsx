@@ -11,7 +11,10 @@ import {
   X,
   Moon,
   Sun,
-  TrendingUp
+  TrendingUp,
+  Sparkles,
+  Users,
+  ExternalLink
 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { cn } from '@/lib/utils';
@@ -22,6 +25,8 @@ const navigation = [
   { name: 'Análise Financeira', href: '/financial-dashboard', icon: TrendingUp },
   { name: 'Insights', href: '/insights', icon: Lightbulb },
   { name: 'Alertas', href: '/alerts', icon: Bell },
+  { name: 'Ofertas Inteligentes', href: '/smart-offers', icon: Sparkles },
+  { name: 'Família', href: '/family', icon: Users },
   { name: 'Configurações', href: '/settings', icon: Settings },
 ];
 
@@ -50,7 +55,7 @@ export function Sidebar() {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed top-0 left-0 h-full w-64 bg-sidebar z-50 transition-transform duration-300",
+        "fixed top-0 left-0 h-full w-64 bg-sidebar z-50 transition-transform duration-300 flex flex-col",
         "lg:translate-x-0",
         isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
@@ -63,7 +68,7 @@ export function Sidebar() {
               </div>
               <div>
                 <h1 className="text-lg font-bold text-sidebar-foreground">BTG PACTUAL</h1>
-                <p className="text-xs text-sidebar-foreground/60">Inteligência Financeira</p>
+                <p className="text-xs text-sidebar-foreground/60">AG ***29 Conta 290501</p>
               </div>
             </div>
             <button
@@ -124,6 +129,24 @@ export function Sidebar() {
                 </>
               )}
             </button>
+          </div>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-sidebar-border">
+            <div className="text-center">
+              <p className="text-xs text-sidebar-foreground/50">
+                Desenvolvido por{' '}
+                <a 
+                  href="https://www.linkedin.com/in/hagatamendes/?locale=en_US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sidebar-primary hover:underline inline-flex items-center gap-1"
+                >
+                  Hágata Mendes
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </aside>

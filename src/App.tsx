@@ -13,6 +13,8 @@ import InsightsPage from "./pages/InsightsPage";
 import AlertsPage from "./pages/AlertsPage";
 import SettingsPage from "./pages/SettingsPage";
 import ChatPage from "./pages/ChatPage";
+import SmartOffersPage from "./pages/SmartOffersPage";
+import FamilyPage from "./pages/FamilyPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
                 <Route path="/alerts" element={<AlertsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/chat" element={<ChatPage />} />
+                <Route path="/smart-offers" element={<SmartOffersPage />} />
+                <Route path="/family" element={<FamilyPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AppLayout>
