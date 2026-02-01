@@ -132,17 +132,8 @@ export function Sidebar() {
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-sidebar-border space-y-3">
-            <a 
-              href="https://www.btgpactual.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-xs text-sidebar-primary hover:underline"
-            >
-              Conheça mais sobre o BTG PACTUAL
-              <ExternalLink className="w-3 h-3" />
-            </a>
-            <div className="text-center">
+          <div className="p-4 border-t border-sidebar-border">
+            <div className="flex items-center justify-between gap-2">
               <p className="text-xs text-sidebar-foreground/50">
                 Desenvolvido por{' '}
                 <a 
@@ -155,6 +146,15 @@ export function Sidebar() {
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </p>
+              <a 
+                href="https://www.btgpactual.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-sidebar-primary hover:underline flex items-center gap-1"
+              >
+                Conheça o BTG
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
           </div>
         </div>
