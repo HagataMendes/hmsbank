@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import { useFinancial } from '@/contexts/FinancialContext';
+import { useCommercialScoring } from '@/hooks/useCommercialScoring';
+import { useFamilyIntelligence } from '@/hooks/useFamilyIntelligence';
 import { cn } from '@/lib/utils';
 
 export function Chatbot() {
   const { chatMessages, addChatMessage, analysis, expenses } = useFinancial();
+  const { commercialScores, rankedProducts } = useCommercialScoring();
+  const { familyIntelligence, familyDashboard, familyGoals, familyOffers } = useFamilyIntelligence();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,6 +19,52 @@ export function Chatbot() {
       return 'Ainda não há análise disponível. Por favor, insira seus dados financeiros na tela "Gerar Análise" e clique em "Gerar Análise Completa" para que eu possa ajudá-lo melhor.';
     }
 
+    // === OFERTAS INTELIGENTES ===
+    if (lowerQuestion.includes('oferta') || lowerQuestion.includes('produto') || lowerQuestion.includes('investimento') || lowerQuestion.includes('investir')) {
+      if (commercialScores && rankedProducts.length > 0) {
+        const topProduct = rankedProducts[0];
+        return `📊 **Ofertas Personalizadas**\n\nCom base no seu perfil, identifiquei as melhores oportunidades:\n\n🏆 **Produto Recomendado:** ${topProduct.name}\n• Compatibilidade: ${topProduct.compatibility}%\n• Retorno estimado: ${topProduct.estimatedReturn}%\n• Risco: ${topProduct.riskLevel}\n• ${topProduct.description}\n\n💡 Seus scores comerciais:\n• Investimento: ${commercialScores.investment}/100\n• Crédito: ${commercialScores.credit}/100\n• Planejamento: ${commercialScores.planning}/100\n\nAcesse "Ofertas Inteligentes" no menu para simular e contratar!`;
+      }
+      return 'Para ver ofertas personalizadas, primeiro gere uma análise financeira. Assim poderei recomendar os melhores produtos para seu perfil.';
+    }
+
+    // Scores comerciais
+    if (lowerQuestion.includes('score comercial') || lowerQuestion.includes('propensão') || lowerQuestion.includes('crédito')) {
+      if (commercialScores) {
+        return `📈 **Seus Scores Comerciais**\n\n• Score de Investimento: ${commercialScores.investment}/100\n• Score de Crédito: ${commercialScores.credit}/100\n• Score de Planejamento: ${commercialScores.planning}/100\n• Score de Proteção: ${commercialScores.protection}/100\n• Score de Consumo: ${commercialScores.consumption}/100\n\nEsses scores são calculados com base no seu perfil comportamental e histórico financeiro.`;
+      }
+      return 'Gere uma análise financeira para calcular seus scores comerciais personalizados.';
+    }
+
+    // === FAMÍLIA ===
+    if (lowerQuestion.includes('família') || lowerQuestion.includes('familiar') || lowerQuestion.includes('cônjuge') || lowerQuestion.includes('filho')) {
+      if (familyIntelligence && familyDashboard) {
+        return `👨‍👩‍👧‍👦 **Inteligência Familiar**\n\n• Score Familiar: ${familyIntelligence.familyScore}/100\n• Renda Familiar: R$ ${familyDashboard.totalIncome.toLocaleString('pt-BR')}\n• Gastos Familiares: R$ ${familyDashboard.totalExpenses.toLocaleString('pt-BR')}\n• Patrimônio: R$ ${familyDashboard.patrimony.toLocaleString('pt-BR')}\n• Estabilidade: ${familyIntelligence.stability}\n\n🎯 Metas familiares ativas: ${familyGoals.length}\n\nAcesse o módulo "Família" para ver o dashboard completo e ofertas familiares!`;
+      }
+      return 'O módulo Família permite agregar dados de cônjuge, filhos e dependentes para uma visão consolidada. Acesse "Família" no menu para começar.';
+    }
+
+    // Metas familiares
+    if (lowerQuestion.includes('meta') || lowerQuestion.includes('objetivo') || lowerQuestion.includes('planejamento')) {
+      if (familyGoals.length > 0) {
+        const goalsText = familyGoals.slice(0, 3).map(g => 
+          `• ${g.title}: ${g.progress}% concluído (R$ ${g.currentValue.toLocaleString('pt-BR')} de R$ ${g.targetValue.toLocaleString('pt-BR')})`
+        ).join('\n');
+        return `🎯 **Suas Metas**\n\n${goalsText}\n\nContinue acompanhando seu progresso no módulo "Família".`;
+      }
+      return 'Você ainda não tem metas cadastradas. Acesse o módulo "Família" para definir objetivos como educação dos filhos, moradia e aposentadoria.';
+    }
+
+    // Ofertas familiares
+    if (lowerQuestion.includes('oferta familiar') || lowerQuestion.includes('investir para família')) {
+      if (familyOffers.length > 0) {
+        const topOffer = familyOffers[0];
+        return `👨‍👩‍👧 **Oferta Familiar Prioritária**\n\n🏆 ${topOffer.productName}\n• Objetivo: ${topOffer.objective}\n• Compatibilidade: ${topOffer.compatibility}%\n• Valor sugerido: R$ ${topOffer.suggestedValue.toLocaleString('pt-BR')}\n• Horizonte: ${topOffer.timeHorizon}\n• Retorno estimado: ${topOffer.estimatedReturn}%\n\nAcesse "Família" > "Ofertas Familiares" para contratar!`;
+      }
+      return 'Para ver ofertas familiares personalizadas, cadastre membros da família no módulo "Família".';
+    }
+
+    // === PERGUNTAS ORIGINAIS ===
     // Perguntas sobre aumento de gastos
     if (lowerQuestion.includes('aumentaram') || lowerQuestion.includes('aumento')) {
       if (analysis.evolution.categoriesAtRisk.length > 0) {
@@ -67,20 +117,37 @@ export function Chatbot() {
 
     // Score
     if (lowerQuestion.includes('score') || lowerQuestion.includes('índice') || lowerQuestion.includes('pontuação')) {
-      return `Seu Índice de Organização Financeira atual é ${analysis.organizationScore}/100. ${
+      let response = `Seu Índice de Organização Financeira atual é ${analysis.organizationScore}/100. ${
         analysis.organizationScore >= 70 ? 'Excelente! Você está muito bem organizado.' :
         analysis.organizationScore >= 50 ? 'Bom resultado, mas há espaço para melhorias.' :
         'Há oportunidades significativas de organização.'
       }`;
+      
+      if (commercialScores) {
+        response += `\n\n📊 Scores Comerciais: Investimento ${commercialScores.investment}, Crédito ${commercialScores.credit}, Planejamento ${commercialScores.planning}.`;
+      }
+      
+      return response;
     }
 
     // Resumo geral
     if (lowerQuestion.includes('resumo') || lowerQuestion.includes('geral') || lowerQuestion.includes('como estou')) {
-      return `📊 Resumo Financeiro\n\n• Gasto total: R$ ${analysis.totalExpenses.toLocaleString('pt-BR')}\n• Maior categoria: ${analysis.biggestCategory.name} (${analysis.biggestCategory.percentage}%)\n• Índice de organização: ${analysis.organizationScore}/100\n• Status: ${analysis.evolution.status === 'positive' ? '🟢 Evolução positiva' : analysis.evolution.status === 'stable' ? '🟡 Estável' : '🔴 Atenção necessária'}\n\n${analysis.summary}`;
+      let response = `📊 **Resumo Financeiro Completo**\n\n• Gasto total: R$ ${analysis.totalExpenses.toLocaleString('pt-BR')}\n• Maior categoria: ${analysis.biggestCategory.name} (${analysis.biggestCategory.percentage}%)\n• Índice de organização: ${analysis.organizationScore}/100\n• Status: ${analysis.evolution.status === 'positive' ? '🟢 Evolução positiva' : analysis.evolution.status === 'stable' ? '🟡 Estável' : '🔴 Atenção necessária'}`;
+      
+      if (commercialScores) {
+        response += `\n\n💼 **Scores Comerciais**\n• Investimento: ${commercialScores.investment}/100\n• Crédito: ${commercialScores.credit}/100`;
+      }
+      
+      if (familyIntelligence) {
+        response += `\n\n👨‍👩‍👧‍👦 **Família**\n• Score Familiar: ${familyIntelligence.familyScore}/100`;
+      }
+      
+      response += `\n\n${analysis.summary}`;
+      return response;
     }
 
-    // Resposta padrão
-    return `Entendi sua pergunta sobre "${question}". Com base nos dados financeiros inseridos, posso informar que seu gasto total atual é de R$ ${analysis.totalExpenses.toLocaleString('pt-BR')}, com a categoria ${analysis.biggestCategory.name} representando a maior parte. Seu índice de organização financeira está em ${analysis.organizationScore}/100. Posso ajudar com algo mais específico?`;
+    // Resposta padrão com contexto completo
+    return `Entendi sua pergunta sobre "${question}". Com base nos dados financeiros inseridos:\n\n• Gasto total: R$ ${analysis.totalExpenses.toLocaleString('pt-BR')}\n• Maior categoria: ${analysis.biggestCategory.name}\n• Score de organização: ${analysis.organizationScore}/100\n\n💡 Dica: Pergunte sobre "ofertas", "família", "metas" ou "scores comerciais" para informações específicas desses módulos!`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,10 +170,10 @@ export function Chatbot() {
 
   const suggestedQuestions = [
     'Por que meus gastos aumentaram?',
-    'Qual categoria mais pesa no orçamento?',
-    'O que mudou nos últimos meses?',
-    'Onde posso organizar melhor?',
-    'Como está meu score financeiro?',
+    'Quais ofertas são ideais para mim?',
+    'Como está minha família financeira?',
+    'Quais são meus scores comerciais?',
+    'Me dá um resumo geral',
   ];
 
   return (
