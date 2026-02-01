@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
 import { 
-  Wallet, 
   TrendingUp, 
   AlertTriangle, 
   Lightbulb,
   ArrowRight,
   Sparkles,
-  BarChart3,
-  Target
+  CreditCard
 } from 'lucide-react';
 import { useFinancial } from '@/contexts/FinancialContext';
-import { StatCard } from '@/components/ui/StatCard';
 import { ScoreRing } from '@/components/ui/ScoreRing';
 import { InsightCard } from '@/components/ui/InsightCard';
 import { EvolutionCard } from '@/components/ui/EvolutionCard';
+import { AccountHeader } from '@/components/dashboard/AccountHeader';
+import { QuickActions } from '@/components/dashboard/QuickActions';
+import { BankCard } from '@/components/dashboard/BankCard';
 
 export default function Dashboard() {
   const { analysis, insights, alerts } = useFinancial();
@@ -21,59 +21,54 @@ export default function Dashboard() {
   const activeAlerts = alerts.filter(a => a.status === 'active');
   const latestInsight = insights[0];
 
+  // Simulated balance for demo
+  const accountBalance = 45892.47;
+
   return (
-    <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div>
-          <p className="text-muted-foreground mb-1">Bem-vindo(a) de volta a sua conta BTG PACTUAL</p>
-          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Olá, Hágata Mendes</h1>
-        </div>
-        
-        <Link
-          to="/analysis"
-          className="btg-button-primary flex items-center gap-2 w-fit"
-        >
-          <Sparkles className="w-5 h-5" />
-          Gerar Nova Análise
-        </Link>
+    <div className="space-y-6 pt-12 lg:pt-0">
+      {/* Account Header with Balance and Security */}
+      <AccountHeader 
+        balance={accountBalance}
+        accountNumber="290501"
+        agency="0029"
+        userName="Hágata Mendes"
+      />
+
+      {/* Quick Actions - Banking Operations */}
+      <div>
+        <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+          Operações Rápidas
+        </h3>
+        <QuickActions />
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard
-          title="Gasto Total do Mês"
-          value={analysis ? `R$ ${analysis.totalExpenses.toLocaleString('pt-BR')}` : 'R$ 0,00'}
-          subtitle={analysis?.monthlyComparison?.[analysis.monthlyComparison.length - 1]?.month}
-          icon={Wallet}
-          trend={analysis?.monthlyComparison && analysis.monthlyComparison.length > 1 ? {
-            value: Math.abs(analysis.monthlyComparison[analysis.monthlyComparison.length - 1].changePercentage),
-            isPositive: analysis.monthlyComparison[analysis.monthlyComparison.length - 1].changePercentage < 0
-          } : undefined}
-        />
-        
-        <StatCard
-          title="Maior Categoria"
-          value={analysis?.biggestCategory?.name || '-'}
-          subtitle={analysis ? `${analysis.biggestCategory.percentage}% do total` : undefined}
-          icon={BarChart3}
-        />
-        
-        <StatCard
-          title="Alertas Ativos"
-          value={activeAlerts.length}
-          subtitle={activeAlerts.length > 0 ? 'Requer atenção' : 'Tudo em ordem'}
-          icon={AlertTriangle}
-          variant={activeAlerts.length > 0 ? 'warning' : 'default'}
-        />
-        
-        <StatCard
-          title="Economia Potencial"
-          value={analysis ? `R$ ${analysis.potentialSavings.toLocaleString('pt-BR')}` : 'R$ 0,00'}
-          subtitle="Com base nos padrões identificados"
-          icon={Target}
-          variant="success"
-        />
+      {/* Cards Section */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <CreditCard className="w-5 h-5 text-primary" />
+            Meus Cartões
+          </h3>
+          <button className="text-sm text-primary hover:text-primary/80 flex items-center gap-1">
+            Gerenciar <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <BankCard 
+            type="credit"
+            variant="black"
+            lastDigits="4589"
+            holderName="Hágata Mendes"
+            expiryDate="12/28"
+          />
+          <BankCard 
+            type="debit"
+            variant="platinum"
+            lastDigits="7823"
+            holderName="Hágata Mendes"
+            expiryDate="08/27"
+          />
+        </div>
       </div>
 
       {/* Score e Insight Principal */}
@@ -167,7 +162,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Quick Actions */}
+      {/* Quick Navigation */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link to="/analysis" className="btg-card-hover group">
           <div className="flex items-center gap-4">
