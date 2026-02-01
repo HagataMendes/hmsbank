@@ -26,8 +26,8 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <p className="text-muted-foreground mb-1">Bem-vindo(a) de volta,</p>
-          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">a sua conta BTG PACTUAL</h1>
+          <p className="text-muted-foreground mb-1">Bem-vindo(a) de volta a sua conta BTG PACTUAL</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Olá, Hágata Mendes</h1>
         </div>
         
         <Link
