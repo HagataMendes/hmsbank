@@ -50,7 +50,7 @@ export function BankCard({
         
         {/* Card type badge */}
         <div className="text-right">
-          <p className="text-[10px] tracking-widest opacity-70">BTG PACTUAL</p>
+          <p className="text-[10px] tracking-widest opacity-70">HMSBANK</p>
           <p className="text-xs font-bold tracking-wider">{variantLabel[variant]}</p>
         </div>
       </div>

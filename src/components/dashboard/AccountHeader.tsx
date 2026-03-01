@@ -25,7 +25,7 @@ export function AccountHeader({ balance, accountNumber, agency, userName }: Acco
         {/* Left side - Welcome and balance */}
         <div className="space-y-3">
           <div>
-            <p className="text-muted-foreground text-sm">Bem-vindo(a) de volta a sua conta BTG PACTUAL</p>
+            <p className="text-muted-foreground text-sm">Bem-vindo(a) de volta a sua conta HMSBANK</p>
             <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Olá, {userName}</h1>
           </div>
           
