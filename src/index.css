@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BTG Pactual Design System */
+/* HMSBANK Design System */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* BTG Pactual Light Theme */
+    /* HMSBANK Light Theme */
     --background: 0 0% 98%;
     --foreground: 220 30% 10%;
 
@@ -17,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 30% 10%;
 
-    /* BTG Navy Blue */
+    /* HMSBANK Navy Blue */
     --primary: 213 100% 15%;
     --primary-foreground: 0 0% 100%;
 

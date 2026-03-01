@@ -67,7 +67,7 @@ export function Sidebar() {
                 <span className="text-white font-bold text-lg">B</span>
               </div>
               <div>
-                <h1 className="text-lg font-bold text-sidebar-foreground">BTG PACTUAL</h1>
+                <h1 className="text-lg font-bold text-sidebar-foreground">HMSBANK</h1>
                 <p className="text-xs text-sidebar-foreground/60">AG ***29 Conta 290501</p>
               </div>
             </div>
@@ -147,12 +147,12 @@ export function Sidebar() {
                 </a>
               </p>
               <a 
-                href="https://www.btgpactual.com/"
+                href="https://www.hmsbank.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-sidebar-primary hover:underline flex items-center gap-1"
               >
-                Conheça o BTG
+                Conheça o HMSBANK
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
