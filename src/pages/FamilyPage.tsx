@@ -76,7 +76,7 @@ export default function FamilyPage() {
               Para usar o módulo Família, primeiro gere uma análise financeira individual.
             </p>
             <Link to="/analysis">
-              <Button className="btg-button-primary">
+              <Button className="hms-button-primary">
                 Gerar Análise <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -88,7 +88,6 @@ export default function FamilyPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Família</h1>
@@ -100,18 +99,16 @@ export default function FamilyPage() {
         </Button>
       </div>
 
-      {/* Family Members */}
       <div>
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
           <Users className="w-5 h-5 text-primary" />
           Núcleo Familiar
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Main User */}
           <Card className="border-primary/30">
             <CardContent className="pt-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-full btg-gradient-primary flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full hms-gradient-primary flex items-center justify-center">
                   <span className="text-primary-foreground font-bold">HM</span>
                 </div>
                 <div>
@@ -126,7 +123,6 @@ export default function FamilyPage() {
             </CardContent>
           </Card>
 
-          {/* Family Members */}
           {familyMembers.map((member) => (
             <Card key={member.id}>
               <CardContent className="pt-6">
@@ -159,9 +155,7 @@ export default function FamilyPage() {
         </div>
       </div>
 
-      {/* Family Dashboard */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Family Score */}
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Score Familiar</CardTitle>
@@ -185,7 +179,6 @@ export default function FamilyPage() {
           </CardContent>
         </Card>
 
-        {/* Financial Summary */}
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle className="text-base">Consolidado Familiar</CardTitle>
@@ -233,7 +226,6 @@ export default function FamilyPage() {
         </Card>
       </div>
 
-      {/* Family Goals */}
       <div>
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-primary" />
@@ -275,7 +267,6 @@ export default function FamilyPage() {
         </div>
       </div>
 
-      {/* Priority Family Offer */}
       {priorityFamilyOffer && (
         <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
           <CardHeader>
@@ -331,7 +322,7 @@ export default function FamilyPage() {
                 </div>
                 
                 <div className="mt-4 space-y-2">
-                  <Button className="w-full btg-button-primary text-lg py-6">
+                  <Button className="w-full hms-button-primary text-lg py-6">
                     <Sparkles className="w-5 h-5 mr-2" />
                     INVESTIR PARA A FAMÍLIA
                   </Button>
@@ -345,7 +336,6 @@ export default function FamilyPage() {
         </Card>
       )}
 
-      {/* Other Family Offers */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Outras Ofertas para sua Família</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

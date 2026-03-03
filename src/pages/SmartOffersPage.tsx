@@ -63,7 +63,7 @@ export default function SmartOffersPage() {
               Para gerar ofertas personalizadas, primeiro insira seus dados financeiros e gere uma análise.
             </p>
             <Link to="/analysis">
-              <Button className="btg-button-primary">
+              <Button className="hms-button-primary">
                 Gerar Análise <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -83,20 +83,17 @@ export default function SmartOffersPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Simulator Modal */}
       <ProductSimulator 
         product={selectedProduct} 
         isOpen={isSimulatorOpen} 
         onClose={closeSimulator} 
       />
 
-      {/* Header */}
       <div>
         <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Ofertas Inteligentes</h1>
         <p className="text-muted-foreground mt-1">Produtos personalizados com base no seu perfil comportamental</p>
       </div>
 
-      {/* Commercial Scores */}
       <div>
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-primary" />
@@ -116,7 +113,6 @@ export default function SmartOffersPage() {
         </div>
       </div>
 
-      {/* Priority Offer */}
       {priorityOffer && (
         <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
           <CardHeader>
@@ -181,7 +177,7 @@ export default function SmartOffersPage() {
                 
                 <div className="mt-4 space-y-2">
                   <Button 
-                    className="w-full btg-button-primary text-lg py-6"
+                    className="w-full hms-button-primary text-lg py-6"
                     onClick={() => openSimulator(priorityOffer.product)}
                   >
                     <Calculator className="w-5 h-5 mr-2" />
@@ -197,7 +193,6 @@ export default function SmartOffersPage() {
         </Card>
       )}
 
-      {/* Product Ranking */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Ranking de Produtos</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -240,7 +235,6 @@ export default function SmartOffersPage() {
         </div>
       </div>
 
-      {/* Cross-sell */}
       {crossSellProducts.length > 0 && (
         <div className="bg-muted/30 rounded-xl p-6">
           <h2 className="text-lg font-semibold mb-4">Produtos Complementares</h2>

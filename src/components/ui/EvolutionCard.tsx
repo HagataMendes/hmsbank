@@ -37,7 +37,7 @@ export function EvolutionCard({ evolution, className }: EvolutionCardProps) {
 
   return (
     <div className={cn(
-      'btg-card border animate-fade-in',
+      'hms-card border animate-fade-in',
       config.bgClass,
       className
     )}>
@@ -56,7 +56,6 @@ export function EvolutionCard({ evolution, className }: EvolutionCardProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Categorias em evolução */}
         {evolution.categoriesImproving.length > 0 && (
           <div className="p-4 rounded-lg bg-success/5 border border-success/10">
             <div className="flex items-center gap-2 mb-2">
@@ -73,7 +72,6 @@ export function EvolutionCard({ evolution, className }: EvolutionCardProps) {
           </div>
         )}
 
-        {/* Categorias estáveis */}
         {evolution.categoriesStable.length > 0 && (
           <div className="p-4 rounded-lg bg-muted/50 border border-border">
             <div className="flex items-center gap-2 mb-2">
@@ -90,7 +88,6 @@ export function EvolutionCard({ evolution, className }: EvolutionCardProps) {
           </div>
         )}
 
-        {/* Categorias em risco */}
         {evolution.categoriesAtRisk.length > 0 && (
           <div className="p-4 rounded-lg bg-destructive/5 border border-destructive/10">
             <div className="flex items-center gap-2 mb-2">

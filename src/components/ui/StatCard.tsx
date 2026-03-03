@@ -24,11 +24,11 @@ export function StatCard({
   className 
 }: StatCardProps) {
   const variants = {
-    default: 'btg-card',
-    primary: 'btg-card bg-primary text-primary-foreground',
-    success: 'btg-card border-success/20 bg-success/5',
-    warning: 'btg-card border-warning/20 bg-warning/5',
-    danger: 'btg-card border-destructive/20 bg-destructive/5',
+    default: 'hms-card',
+    primary: 'hms-card bg-primary text-primary-foreground',
+    success: 'hms-card border-success/20 bg-success/5',
+    warning: 'hms-card border-warning/20 bg-warning/5',
+    danger: 'hms-card border-destructive/20 bg-destructive/5',
   };
 
   const iconVariants = {

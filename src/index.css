@@ -21,11 +21,11 @@
     --primary: 213 100% 15%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 213 20% 95%;
-    --secondary-foreground: 213 100% 15%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 220 30% 10%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 215 15% 45%;
+    --muted-foreground: 215 16% 47%;
 
     --accent: 213 100% 15%;
     --accent-foreground: 0 0% 100%;
@@ -33,12 +33,11 @@
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Semantic Colors */
     --success: 145 63% 42%;
     --success-foreground: 0 0% 100%;
     
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
+    --warning-foreground: 220 30% 10%;
     
     --info: 200 98% 39%;
     --info-foreground: 0 0% 100%;
@@ -49,7 +48,7 @@
 
     --radius: 0.75rem;
 
-    /* BTG Gradients */
+    /* HMSBANK Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(213 100% 15%) 0%, hsl(213 80% 25%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
     --gradient-success: linear-gradient(135deg, hsl(145 63% 42%) 0%, hsl(160 60% 45%) 100%);
@@ -61,7 +60,7 @@
     --shadow-lg: 0 10px 15px -3px hsl(213 100% 15% / 0.1), 0 4px 6px -4px hsl(213 100% 15% / 0.08);
     --shadow-card: 0 0 0 1px hsl(214 32% 91%), 0 2px 4px hsl(213 100% 15% / 0.04);
 
-    /* Sidebar - matching BTG style */
+    /* Sidebar - matching HMSBANK style */
     --sidebar-background: 213 100% 15%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 0 0% 100%;
@@ -73,7 +72,7 @@
   }
 
   .dark {
-    /* BTG Pactual Dark Theme */
+    /* HMSBANK Dark Theme */
     --background: 220 25% 6%;
     --foreground: 210 20% 95%;
 
@@ -150,101 +149,101 @@
 }
 
 @layer components {
-  .btg-card {
+  .hms-card {
     @apply bg-card rounded-xl border border-border p-6;
     box-shadow: var(--shadow-card);
   }
 
-  .btg-card-hover {
-    @apply btg-card transition-all duration-300;
+  .hms-card-hover {
+    @apply hms-card transition-all duration-300;
   }
 
-  .btg-card-hover:hover {
+  .hms-card-hover:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
   }
 
-  .btg-gradient-primary {
+  .hms-gradient-primary {
     background: var(--gradient-primary);
   }
 
-  .btg-gradient-card {
+  .hms-gradient-card {
     background: var(--gradient-card);
   }
 
-  .btg-gradient-success {
+  .hms-gradient-success {
     background: var(--gradient-success);
   }
 
-  .btg-gradient-warning {
+  .hms-gradient-warning {
     background: var(--gradient-warning);
   }
 
-  .btg-shadow-sm {
+  .hms-shadow-sm {
     box-shadow: var(--shadow-sm);
   }
 
-  .btg-shadow-md {
+  .hms-shadow-md {
     box-shadow: var(--shadow-md);
   }
 
-  .btg-shadow-lg {
+  .hms-shadow-lg {
     box-shadow: var(--shadow-lg);
   }
 
-  .btg-text-gradient {
+  .hms-text-gradient {
     @apply bg-clip-text text-transparent;
     background: var(--gradient-primary);
   }
 
-  .btg-input {
+  .hms-input {
     @apply w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
   }
 
-  .btg-button-primary {
+  .hms-button-primary {
     @apply px-6 py-3 rounded-lg font-medium text-primary-foreground transition-all duration-200;
     background: var(--gradient-primary);
   }
 
-  .btg-button-primary:hover {
+  .hms-button-primary:hover {
     opacity: 0.9;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
 
-  .btg-button-secondary {
+  .hms-button-secondary {
     @apply px-6 py-3 rounded-lg font-medium bg-secondary text-secondary-foreground border border-border transition-all duration-200;
   }
 
-  .btg-button-secondary:hover {
+  .hms-button-secondary:hover {
     @apply bg-muted;
   }
 
-  .btg-badge {
+  .hms-badge {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
   }
 
-  .btg-badge-success {
-    @apply btg-badge bg-success/10 text-success;
+  .hms-badge-success {
+    @apply hms-badge bg-success/10 text-success;
   }
 
-  .btg-badge-warning {
-    @apply btg-badge bg-warning/10 text-warning;
+  .hms-badge-warning {
+    @apply hms-badge bg-warning/10 text-warning;
   }
 
-  .btg-badge-danger {
-    @apply btg-badge bg-destructive/10 text-destructive;
+  .hms-badge-danger {
+    @apply hms-badge bg-destructive/10 text-destructive;
   }
 
-  .btg-badge-info {
-    @apply btg-badge bg-info/10 text-info;
+  .hms-badge-info {
+    @apply hms-badge bg-info/10 text-info;
   }
 
-  .btg-score-ring {
+  .hms-score-ring {
     @apply relative flex items-center justify-center;
   }
 
-  .btg-score-ring::before {
+  .hms-score-ring::before {
     content: '';
     @apply absolute inset-0 rounded-full;
     background: conic-gradient(
@@ -266,60 +265,38 @@
     to { opacity: 1; transform: translateX(0); }
   }
 
-  @keyframes pulse-soft {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 0 8px hsl(var(--primary) / 0); }
   }
 
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  .animate-fadeIn {
+  .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
-  .animate-slideIn {
+  .animate-slide-in {
     animation: slideIn 0.4s ease-out forwards;
   }
 
-  .animate-pulse-soft {
-    animation: pulse-soft 2s ease-in-out infinite;
-  }
-
-  .animate-shimmer {
-    animation: shimmer 2s infinite linear;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--muted)) 25%,
-      hsl(var(--card)) 50%,
-      hsl(var(--muted)) 75%
-    );
-    background-size: 200% 100%;
-  }
-
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-muted/50 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
 }

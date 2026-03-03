@@ -13,10 +13,9 @@ export default function AlertsPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center">
             <Bell className="w-5 h-5 text-primary-foreground" />
           </div>
           <div>
@@ -28,7 +27,6 @@ export default function AlertsPage() {
         </div>
       </div>
 
-      {/* Active Alerts */}
       <div>
         <h2 className="text-lg font-semibold text-foreground mb-4">Alertas Ativos</h2>
         {activeAlerts.length > 0 ? (
@@ -40,7 +38,7 @@ export default function AlertsPage() {
             ))}
           </div>
         ) : (
-          <div className="btg-card flex flex-col items-center justify-center text-center py-12">
+          <div className="hms-card flex flex-col items-center justify-center text-center py-12">
             <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mb-4">
               <CheckCircle className="w-8 h-8 text-success" />
             </div>
@@ -52,7 +50,6 @@ export default function AlertsPage() {
         )}
       </div>
 
-      {/* Resolved Alerts */}
       {resolvedAlerts.length > 0 && (
         <div>
           <button
@@ -77,9 +74,8 @@ export default function AlertsPage() {
         </div>
       )}
 
-      {/* Empty State */}
       {alerts.length === 0 && (
-        <div className="btg-card flex flex-col items-center justify-center text-center py-16">
+        <div className="hms-card flex flex-col items-center justify-center text-center py-16">
           <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mb-6">
             <Bell className="w-10 h-10 text-muted-foreground" />
           </div>
@@ -89,7 +85,7 @@ export default function AlertsPage() {
           <p className="text-muted-foreground mb-6 max-w-md">
             Gere uma análise financeira para que o sistema possa identificar possíveis alertas
           </p>
-          <Link to="/analysis" className="btg-button-primary flex items-center gap-2">
+          <Link to="/analysis" className="hms-button-primary flex items-center gap-2">
             <Sparkles className="w-5 h-5" />
             Gerar Análise
           </Link>

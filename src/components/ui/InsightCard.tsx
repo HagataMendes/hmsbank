@@ -13,19 +13,19 @@ export function InsightCard({ insight, className }: InsightCardProps) {
       icon: AlertTriangle,
       bgClass: 'bg-warning/5 border-warning/20',
       iconClass: 'bg-warning/10 text-warning',
-      badge: 'btg-badge-warning',
+      badge: 'hms-badge-warning',
     },
     pattern: {
       icon: TrendingUp,
       bgClass: 'bg-info/5 border-info/20',
       iconClass: 'bg-info/10 text-info',
-      badge: 'btg-badge-info',
+      badge: 'hms-badge-info',
     },
     economy: {
       icon: PiggyBank,
       bgClass: 'bg-success/5 border-success/20',
       iconClass: 'bg-success/10 text-success',
-      badge: 'btg-badge-success',
+      badge: 'hms-badge-success',
     },
     summary: {
       icon: FileText,
@@ -46,7 +46,7 @@ export function InsightCard({ insight, className }: InsightCardProps) {
 
   return (
     <div className={cn(
-      'btg-card border animate-fade-in',
+      'hms-card border animate-fade-in',
       config.bgClass,
       className
     )}>
@@ -57,12 +57,12 @@ export function InsightCard({ insight, className }: InsightCardProps) {
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-2">
-            <span className={cn('btg-badge', config.badge)}>
+            <span className={cn('hms-badge', config.badge)}>
               {insight.type === 'alert' ? 'Alerta' : 
                insight.type === 'pattern' ? 'Padrão' :
                insight.type === 'economy' ? 'Economia' : 'Resumo'}
             </span>
-            <span className="btg-badge bg-muted text-muted-foreground">
+            <span className="hms-badge bg-muted text-muted-foreground">
               {insight.category}
             </span>
             <span className="text-xs text-muted-foreground">

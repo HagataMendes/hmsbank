@@ -79,10 +79,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'btg-sm': 'var(--shadow-sm)',
-        'btg-md': 'var(--shadow-md)',
-        'btg-lg': 'var(--shadow-lg)',
-        'btg-card': 'var(--shadow-card)',
+        'hms-sm': 'var(--shadow-sm)',
+        'hms-md': 'var(--shadow-md)',
+        'hms-lg': 'var(--shadow-lg)',
+        'hms-card': 'var(--shadow-card)',
       },
       keyframes: {
         "accordion-down": {

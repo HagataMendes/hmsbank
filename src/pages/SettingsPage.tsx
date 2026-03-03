@@ -7,9 +7,8 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center">
+        <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center">
           <Settings className="w-5 h-5 text-primary-foreground" />
         </div>
         <div>
@@ -18,10 +17,8 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Settings Sections */}
       <div className="space-y-6">
-        {/* Email Notifications */}
-        <div className="btg-card">
+        <div className="hms-card">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Mail className="w-5 h-5 text-primary" />
@@ -53,8 +50,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Notification Frequency */}
-        <div className="btg-card">
+        <div className="hms-card">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Bell className="w-5 h-5 text-primary" />
@@ -84,8 +80,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Automations */}
-        <div className="btg-card">
+        <div className="hms-card">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Zap className="w-5 h-5 text-primary" />
@@ -117,8 +112,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Info Card */}
-        <div className="btg-card border-primary/20 bg-primary/5">
+        <div className="hms-card border-primary/20 bg-primary/5">
           <h3 className="font-semibold text-foreground mb-2">Sobre suas preferências</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Suas configurações são salvas automaticamente. As notificações por e-mail e automações 

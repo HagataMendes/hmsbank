@@ -21,12 +21,10 @@ export default function Dashboard() {
   const activeAlerts = alerts.filter(a => a.status === 'active');
   const latestInsight = insights[0];
 
-  // Simulated balance for demo
   const accountBalance = 45892.47;
 
   return (
     <div className="space-y-6 pt-12 lg:pt-0">
-      {/* Account Header with Balance and Security */}
       <AccountHeader 
         balance={accountBalance}
         accountNumber="290501"
@@ -34,7 +32,6 @@ export default function Dashboard() {
         userName="Hágata Mendes"
       />
 
-      {/* Quick Actions - Banking Operations */}
       <div>
         <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
           Operações Rápidas
@@ -42,7 +39,6 @@ export default function Dashboard() {
         <QuickActions />
       </div>
 
-      {/* Cards Section */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-foreground flex items-center gap-2">
@@ -71,10 +67,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Score e Insight Principal */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Score de Organização */}
-        <div className="btg-card flex flex-col items-center justify-center text-center">
+        <div className="hms-card flex flex-col items-center justify-center text-center">
           <h3 className="text-sm font-medium text-muted-foreground mb-4">
             Índice de Organização Financeira
           </h3>
@@ -90,7 +84,6 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* Insight Principal */}
         <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
@@ -108,7 +101,7 @@ export default function Dashboard() {
           {latestInsight ? (
             <InsightCard insight={latestInsight} />
           ) : (
-            <div className="btg-card flex flex-col items-center justify-center text-center py-12">
+            <div className="hms-card flex flex-col items-center justify-center text-center py-12">
               <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
                 <Lightbulb className="w-8 h-8 text-muted-foreground" />
               </div>
@@ -123,7 +116,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Evolução Financeira */}
       {analysis?.evolution && (
         <div>
           <div className="flex items-center justify-between mb-4">
@@ -136,11 +128,10 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Banner Informativo Investimentos */}
-      <div className="btg-card border-primary/20 bg-primary/5">
+      <div className="hms-card border-primary/20 bg-primary/5">
         <div className="flex flex-col md:flex-row md:items-center gap-4">
           <div className="flex-shrink-0">
-            <div className="w-12 h-12 rounded-xl btg-gradient-primary flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl hms-gradient-primary flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-primary-foreground" />
             </div>
           </div>
@@ -155,16 +146,15 @@ export default function Dashboard() {
           </div>
           <Link 
             to="/insights"
-            className="btg-button-secondary whitespace-nowrap"
+            className="hms-button-secondary whitespace-nowrap"
           >
             Ver Insights
           </Link>
         </div>
       </div>
 
-      {/* Quick Navigation */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Link to="/analysis" className="btg-card-hover group">
+        <Link to="/analysis" className="hms-card-hover group">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
               <Sparkles className="w-6 h-6 text-primary" />
@@ -176,7 +166,7 @@ export default function Dashboard() {
           </div>
         </Link>
 
-        <Link to="/alerts" className="btg-card-hover group">
+        <Link to="/alerts" className="hms-card-hover group">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-warning/10 flex items-center justify-center group-hover:bg-warning/20 transition-colors">
               <AlertTriangle className="w-6 h-6 text-warning" />
@@ -188,7 +178,7 @@ export default function Dashboard() {
           </div>
         </Link>
 
-        <Link to="/chat" className="btg-card-hover group">
+        <Link to="/chat" className="hms-card-hover group">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-info/10 flex items-center justify-center group-hover:bg-info/20 transition-colors">
               <Lightbulb className="w-6 h-6 text-info" />
