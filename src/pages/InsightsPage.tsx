@@ -22,10 +22,9 @@ export default function InsightsPage() {
 
   return (
     <div className="space-y-8 pt-12 lg:pt-0">
-      {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center">
             <Lightbulb className="w-5 h-5 text-primary-foreground" />
           </div>
           <div>
@@ -35,7 +34,6 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="flex items-center gap-2 flex-wrap">
         <Filter className="w-4 h-4 text-muted-foreground" />
         {filterOptions.map(option => (
@@ -53,7 +51,6 @@ export default function InsightsPage() {
         ))}
       </div>
 
-      {/* Insights List */}
       {filteredInsights.length > 0 ? (
         <div className="space-y-4">
           {filteredInsights.map((insight, index) => (
@@ -63,7 +60,7 @@ export default function InsightsPage() {
           ))}
         </div>
       ) : (
-        <div className="btg-card flex flex-col items-center justify-center text-center py-16">
+        <div className="hms-card flex flex-col items-center justify-center text-center py-16">
           <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mb-6">
             <Lightbulb className="w-10 h-10 text-muted-foreground" />
           </div>
@@ -76,7 +73,7 @@ export default function InsightsPage() {
               : 'Tente alterar o filtro ou gere uma nova análise'}
           </p>
           {filter === 'all' && (
-            <Link to="/analysis" className="btg-button-primary flex items-center gap-2">
+            <Link to="/analysis" className="hms-button-primary flex items-center gap-2">
               <Sparkles className="w-5 h-5" />
               Gerar Análise
             </Link>

@@ -30,15 +30,13 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
     const annualRate = product.estimatedReturn || 12;
     const monthlyRate = annualRate / 100 / 12;
     
-    // Compound interest calculation
     const finalValue = investmentValue * Math.pow(1 + monthlyRate, termMonths);
     const totalReturn = finalValue - investmentValue;
     const percentageReturn = ((finalValue / investmentValue) - 1) * 100;
     const monthlyReturn = totalReturn / termMonths;
 
-    // For credit products, calculate differently
     if (product.category === 'credit') {
-      const creditRate = 1.99; // Monthly rate for credit
+      const creditRate = 1.99;
       const monthlyPayment = investmentValue * (creditRate / 100 * Math.pow(1 + creditRate / 100, termMonths)) / 
                              (Math.pow(1 + creditRate / 100, termMonths) - 1);
       const totalPayment = monthlyPayment * termMonths;
@@ -84,7 +82,6 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
         </DialogHeader>
 
         <div className="space-y-6">
-          {/* Product Info */}
           <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
             <div className="flex-1">
               <p className="font-medium">{product.name}</p>
@@ -95,7 +92,6 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
             </Badge>
           </div>
 
-          {/* Value Input */}
           <div className="space-y-3">
             <Label className="flex items-center gap-2">
               <DollarSign className="w-4 h-4" />
@@ -125,7 +121,6 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
             </div>
           </div>
 
-          {/* Term Input */}
           <div className="space-y-3">
             <Label className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
@@ -146,7 +141,6 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
             </div>
           </div>
 
-          {/* Results */}
           {simulation && (
             <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
               <CardHeader className="pb-2">
@@ -245,8 +239,7 @@ export function ProductSimulator({ product, isOpen, onClose }: ProductSimulatorP
             </Card>
           )}
 
-          {/* CTA */}
-          <Button className="w-full btg-button-primary text-lg py-6">
+          <Button className="w-full hms-button-primary text-lg py-6">
             {isCredit ? 'SOLICITAR CRÉDITO' : 'INVESTIR AGORA'}
           </Button>
           

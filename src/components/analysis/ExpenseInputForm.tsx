@@ -80,8 +80,7 @@ export function ExpenseInputForm() {
 
   return (
     <div className="space-y-6">
-      {/* Botão principal */}
-      <div className="btg-card p-6 btg-gradient-primary text-primary-foreground">
+      <div className="hms-card p-6 hms-gradient-primary text-primary-foreground">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold mb-1">Análise Completa com IA</h2>
@@ -92,7 +91,7 @@ export function ExpenseInputForm() {
           <button
             onClick={handleGenerateAnalysis}
             disabled={isAnalyzing}
-            className="btg-button-secondary flex items-center justify-center gap-2 min-w-[200px]"
+            className="hms-button-secondary flex items-center justify-center gap-2 min-w-[200px]"
           >
             {isAnalyzing ? (
               <>
@@ -109,20 +108,19 @@ export function ExpenseInputForm() {
         </div>
       </div>
 
-      {/* Formulário de gastos por mês */}
       <div className="space-y-4">
         {expenses.map((monthData, monthIndex) => {
           const isExpanded = expandedMonths.has(monthIndex);
           const total = calculateTotal(monthData);
 
           return (
-            <div key={monthData.month} className="btg-card animate-fade-in" style={{ animationDelay: `${monthIndex * 100}ms` }}>
+            <div key={monthData.month} className="hms-card animate-fade-in" style={{ animationDelay: `${monthIndex * 100}ms` }}>
               <button
                 onClick={() => toggleMonth(monthIndex)}
                 className="w-full flex items-center justify-between p-4 -m-6 mb-0 hover:bg-muted/30 rounded-t-xl transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center text-primary-foreground font-bold">
+                  <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center text-primary-foreground font-bold">
                     {monthData.month.substring(0, 3).toUpperCase()}
                   </div>
                   <div className="text-left">
@@ -160,7 +158,7 @@ export function ExpenseInputForm() {
                             value={monthData[category] || ''}
                             onChange={(e) => updateExpense(monthIndex, category, e.target.value)}
                             placeholder="0,00"
-                            className="btg-input pl-10"
+                            className="hms-input pl-10"
                           />
                         </div>
                       </div>
@@ -173,12 +171,11 @@ export function ExpenseInputForm() {
         })}
       </div>
 
-      {/* Segundo botão para gerar análise */}
       <div className="flex justify-center">
         <button
           onClick={handleGenerateAnalysis}
           disabled={isAnalyzing}
-          className="btg-button-primary flex items-center gap-2 text-lg px-8 py-4"
+          className="hms-button-primary flex items-center gap-2 text-lg px-8 py-4"
         >
           {isAnalyzing ? (
             <>

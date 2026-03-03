@@ -21,13 +21,13 @@ export default function FinancialDashboard() {
     return (
       <div className="space-y-8 pt-12 lg:pt-0">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-primary-foreground" />
           </div>
           <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Análise Financeira</h1>
         </div>
 
-        <div className="btg-card flex flex-col items-center justify-center text-center py-16">
+        <div className="hms-card flex flex-col items-center justify-center text-center py-16">
           <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mb-6">
             <BarChart3 className="w-10 h-10 text-muted-foreground" />
           </div>
@@ -37,7 +37,7 @@ export default function FinancialDashboard() {
           <p className="text-muted-foreground mb-6 max-w-md">
             Insira seus dados financeiros e gere uma análise para visualizar seu dashboard completo
           </p>
-          <Link to="/analysis" className="btg-button-primary flex items-center gap-2">
+          <Link to="/analysis" className="hms-button-primary flex items-center gap-2">
             <Sparkles className="w-5 h-5" />
             Gerar Primeira Análise
           </Link>
@@ -71,7 +71,7 @@ export default function FinancialDashboard() {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg btg-gradient-primary flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg hms-gradient-primary flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-primary-foreground" />
           </div>
           <div>
@@ -88,14 +88,14 @@ export default function FinancialDashboard() {
           </div>
         </div>
         
-        <Link to="/analysis" className="btg-button-primary flex items-center gap-2 w-fit">
+        <Link to="/analysis" className="hms-button-primary flex items-center gap-2 w-fit">
           <Sparkles className="w-5 h-5" />
           Nova Análise
         </Link>
       </div>
 
       {/* Summary */}
-      <div className="btg-card btg-gradient-primary text-primary-foreground">
+      <div className="hms-card hms-gradient-primary text-primary-foreground">
         <p className="text-primary-foreground/80 text-sm mb-2">Resumo da Análise</p>
         <p className="text-lg leading-relaxed">{analysis.summary}</p>
       </div>
@@ -120,7 +120,7 @@ export default function FinancialDashboard() {
           icon={TrendingDown}
           variant="success"
         />
-        <div className="btg-card flex flex-col items-center justify-center">
+        <div className="hms-card flex flex-col items-center justify-center">
           <p className="text-sm text-muted-foreground mb-2">Índice de Organização</p>
           <ScoreRing score={analysis.organizationScore} size="md" />
         </div>
@@ -143,7 +143,7 @@ export default function FinancialDashboard() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {analysis.monthlyComparison.map((month, index) => (
-            <div key={month.month} className="btg-card animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+            <div key={month.month} className="hms-card animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
               <p className="text-sm font-medium text-muted-foreground mb-1">{month.month}</p>
               <p className="text-2xl font-bold text-foreground">
                 R$ {month.total.toLocaleString('pt-BR')}
@@ -176,7 +176,7 @@ export default function FinancialDashboard() {
           <PieChart className="w-5 h-5 text-primary" />
           Distribuição por Categoria
         </h2>
-        <div className="btg-card">
+        <div className="hms-card">
           <div className="space-y-4">
             {categoryBreakdown.map(category => {
               const value = getCategoryValue(category.key);
@@ -208,7 +208,7 @@ export default function FinancialDashboard() {
       {/* Link para Insights */}
       <Link 
         to="/insights" 
-        className="btg-card-hover flex items-center justify-between group"
+        className="hms-card-hover flex items-center justify-between group"
       >
         <div>
           <h3 className="font-semibold text-foreground">Ver Todos os Insights</h3>

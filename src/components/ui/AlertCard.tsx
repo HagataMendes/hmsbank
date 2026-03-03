@@ -13,17 +13,17 @@ export function AlertCard({ alert, onResolve, className }: AlertCardProps) {
     high: {
       bgClass: 'bg-destructive/5 border-destructive/20',
       iconClass: 'bg-destructive/10 text-destructive',
-      badge: 'btg-badge-danger',
+      badge: 'hms-badge-danger',
     },
     medium: {
       bgClass: 'bg-warning/5 border-warning/20',
       iconClass: 'bg-warning/10 text-warning',
-      badge: 'btg-badge-warning',
+      badge: 'hms-badge-warning',
     },
     low: {
       bgClass: 'bg-info/5 border-info/20',
       iconClass: 'bg-info/10 text-info',
-      badge: 'btg-badge-info',
+      badge: 'hms-badge-info',
     },
   };
 
@@ -32,7 +32,7 @@ export function AlertCard({ alert, onResolve, className }: AlertCardProps) {
 
   return (
     <div className={cn(
-      'btg-card border animate-fade-in',
+      'hms-card border animate-fade-in',
       isResolved ? 'bg-muted/30 border-border' : config.bgClass,
       className
     )}>
@@ -51,14 +51,14 @@ export function AlertCard({ alert, onResolve, className }: AlertCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-2">
             <span className={cn(
-              'btg-badge',
-              isResolved ? 'btg-badge-success' : config.badge
+              'hms-badge',
+              isResolved ? 'hms-badge-success' : config.badge
             )}>
               {isResolved ? 'Resolvido' : 
                alert.severity === 'high' ? 'Alta Prioridade' :
                alert.severity === 'medium' ? 'Média Prioridade' : 'Baixa Prioridade'}
             </span>
-            <span className="btg-badge bg-muted text-muted-foreground">
+            <span className="hms-badge bg-muted text-muted-foreground">
               {alert.category}
             </span>
           </div>
