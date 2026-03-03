@@ -42,8 +42,8 @@ export interface QuickSimulation {
 
 export const FINANCIAL_PRODUCTS: FinancialProduct[] = [
   {
-    id: 'cdb-btg',
-    name: 'CDB BTG Pactual',
+    id: 'cdb-hmsbank',
+    name: 'CDB HMSBANK',
     category: 'investment',
     type: 'Renda Fixa',
     riskLevel: 'low',
@@ -119,7 +119,7 @@ export const FINANCIAL_PRODUCTS: FinancialProduct[] = [
   },
   {
     id: 'cartao-premium',
-    name: 'Cartão BTG+ Black',
+    name: 'Cartão HMSBANK Black',
     category: 'consumption',
     type: 'Cartão',
     riskLevel: 'low',
