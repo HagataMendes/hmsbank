@@ -1,73 +1,132 @@
-# Welcome to your Lovable project
+<h1 align="center">💳 HMSBANK · Plataforma de Inteligência Financeira e Análise de Clientes</h1>
 
-## Project info
+<p align="center">
+  MVP de um app bancário que transforma os gastos do cliente em <b>insights</b>, <b>alertas</b>, <b>scores comerciais</b> e <b>ofertas personalizadas</b>,<br>
+  com uma visão consolidada da família e automações orquestradas no <b>n8n</b>.
+</p>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<p align="center">
+  <img src="https://img.shields.io/badge/React%2018-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React 18">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/shadcn%2Fui-000000?style=flat-square&logo=shadcnui&logoColor=white" alt="shadcn/ui">
+  <img src="https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white" alt="n8n">
+  <img src="https://img.shields.io/badge/Recharts-8884D8?style=flat-square" alt="Recharts">
+</p>
 
-## How can I edit this code?
+<p align="center">
+  <a href="https://lnkd.in/dT_4TEqc"><b>▶ Ver o protótipo funcional</b></a> ·
+  <a href="https://lnkd.in/dQJfCWSa"><b>🧭 Fluxo e arquitetura</b></a>
+</p>
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+> **Nota:** "HMSBANK" é uma marca fictícia, criada para portfólio. Saldos, cartões, familiares e produtos são dados simulados.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🎯 O problema
 
-Changes made via Lovable will be committed automatically to this repo.
+Os bancos têm muitos dados de consumo dos clientes, mas quase sempre usam isso de forma genérica: a mesma oferta vai para todo mundo, e o cliente não recebe nada que o ajude a organizar a própria vida financeira.
 
-**Use your preferred IDE**
+O HMSBANK inverte essa lógica. Primeiro o app **gera valor para o cliente**, com diagnóstico, alertas e evolução dos gastos. A partir desse mesmo diagnóstico, o banco calcula **a propensão do cliente a cada produto** e faz uma oferta com justificativa clara.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🧱 Os três pilares (MVPs)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1. Inteligência Financeira
+- O cliente informa os **gastos mensais** em 8 categorias: água, luz, mercado, escola, aluguel, transporte, lazer e outros.
+- **Score de organização financeira** (0–100), calculado a partir da proporção entre gastos fixos e variáveis, da consistência dos dados, da evolução mês a mês e dos alertas críticos.
+- **Evolução mês a mês:** cada categoria é classificada como *melhorando*, *estável* ou *em risco*.
+- **Insights automáticos:** resumo do mês, maior categoria, peso do lazer e composição entre gastos fixos e variáveis.
+- **Alertas** para aumentos acima de 20% (acima de 40% é severidade alta), que o cliente pode marcar como resolvidos.
+- **Economia potencial** estimada a partir de padrões de consumo.
 
-Follow these steps:
+### 2. Ofertas Inteligentes
+- **5 scores comerciais** derivados da análise: Investimento, Crédito, Planejamento, Proteção e Consumo.
+- **Ranking de 8 produtos** (CDB, Tesouro Selic, fundos, previdência, crédito, cartão e seguro) por compatibilidade e **probabilidade de conversão**.
+- **Oferta prioritária** com o motivo explicado, o perfil do cliente, o valor sugerido e os gatilhos de conversão.
+- **Cross-sell** com os próximos 3 produtos e um **simulador** de valor, prazo e retorno.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 3. Planejamento Familiar
+- **Núcleo familiar:** cônjuge, filhos e dependentes, cada um com renda e gastos próprios.
+- **Score familiar**, perfil comportamental (conservador, moderado ou agressivo), estabilidade, previsibilidade e nível de risco.
+- **Dashboard consolidado:** renda, gastos, investimentos, reservas, patrimônio e taxa de poupança da família.
+- **Metas familiares** (educação, moradia, aposentadoria e outras) com acompanhamento de progresso, além de **ofertas familiares** como previdência, carteira diversificada, proteção e crédito.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### ➕ Assistente virtual
+Um chatbot que responde com base na análise do próprio cliente: ofertas, scores, família, metas, alertas e gastos.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🏗️ Arquitetura
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```mermaid
+flowchart LR
+    U[Cliente] --> APP[App React + TypeScript]
+    APP --> CTX[FinancialContext<br/>estado e regras de análise]
+    CTX --> A[Inteligência Financeira<br/>score · insights · alertas]
+    A --> H1[useCommercialScoring<br/>scores e ranking de produtos]
+    A --> H2[useFamilyIntelligence<br/>visão familiar e metas]
+    H1 --> OF[Ofertas Inteligentes + Simulador]
+    H2 --> FA[Módulo Família]
+    A & H1 & H2 --> BOT[Assistente virtual]
+    CTX -->|webhook JSON| N8N[n8n<br/>orquestração e disparo de comunicações]
 ```
 
-**Edit a file directly in GitHub**
+- **Regras de análise centralizadas** num Context do React (`FinancialContext`), que as telas consomem.
+- **Hooks de domínio** separam o motor comercial (`useCommercialScoring`) da inteligência familiar (`useFamilyIntelligence`).
+- **Integração com o n8n:** ao gerar a análise, o app envia os gastos e o resultado para um webhook do n8n, que orquestra o processamento e o disparo de comunicações.
+- **Tipagem forte** dos domínios em `src/types/` (`financial`, `offers` e `family`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🖥️ Telas
 
-**Use GitHub Codespaces**
+| Tela | O que mostra |
+|---|---|
+| **Início** | Saldo, agência e conta, operações rápidas (Pix, TED, boletos, cartões, extrato e recarga) e cartões |
+| **Gerar Análise** | Formulário de gastos por mês e categoria |
+| **Dashboard Financeiro** | Score, evolução, comparativo mensal e gráficos |
+| **Insights** e **Alertas** | Descobertas automáticas e alertas com status |
+| **Ofertas Inteligentes** | Scores comerciais, oferta prioritária, ranking, cross-sell e simulador |
+| **Família** | Núcleo familiar, score familiar, metas e ofertas para a família |
+| **Assistente** | Chat que responde com base nos dados do cliente |
+| **Configurações** | Notificações, frequência e automações |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+O app tem **tema claro e escuro** e layout responsivo.
 
-## What technologies are used for this project?
+## 🚀 Como executar
 
-This project is built with:
+```bash
+git clone https://github.com/HagataMendes/hmsbank.git
+cd hmsbank
+npm install
+npm run dev     # http://localhost:8080
+npm run build   # build de produção em dist/
+npm test        # testes com Vitest
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📁 Estrutura
 
-## How can I deploy this project?
+```
+src/
+├── pages/            telas (Dashboard, Análise, Ofertas, Família, Chat…)
+├── components/
+│   ├── dashboard/    cabeçalho da conta, cartões, operações rápidas
+│   ├── analysis/     formulário de gastos
+│   ├── offers/       simulador de produtos
+│   ├── chat/         assistente virtual
+│   ├── layout/       menu lateral e layout
+│   └── ui/           componentes de interface (shadcn/ui + cards próprios)
+├── contexts/         FinancialContext (regras de análise) e ThemeContext
+├── hooks/            useCommercialScoring, useFamilyIntelligence
+└── types/            modelos de domínio: financial, offers, family
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 🛣️ Próximos passos
 
-## Can I connect a custom domain to my Lovable project?
+- Persistir os dados no Supabase, com autenticação e RLS.
+- Trocar as regras heurísticas por modelos de propensão treinados com dados históricos.
+- Substituir o assistente por regras por um LLM com RAG sobre a análise do cliente.
 
-Yes, you can!
+## 👩‍💻 Autora
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Hágata Mendes**, Analista de Dados Sênior
+[LinkedIn](https://www.linkedin.com/in/hagatamendes/) · [GitHub](https://github.com/HagataMendes)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+<sub>Criado com apoio do <a href="https://lovable.dev">Lovable</a>.</sub>
